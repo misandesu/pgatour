@@ -1,2 +1,2 @@
 # pgatour
-https://misandesu.github.io/pgatour
+https://misandesu.github.io/pgatour/
