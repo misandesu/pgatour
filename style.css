@@ -236,3 +236,29 @@ body {
 .music-list::-webkit-scrollbar-thumb {
   background: #555;
 }
+
+.bg-slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-slider::before,
+.bg-slider::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 1s ease;
+}
+
+.bg-slider::before {
+  opacity: 1;
+}
+
+.bg-slider::after {
+  opacity: 0;
+}

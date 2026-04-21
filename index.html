@@ -206,10 +206,24 @@ function bgSlide(id, images){
   let i = 0;
   const el = document.getElementById(id);
 
-  setInterval(()=>{
-    i = (i+1)%images.length;
-    el.style.backgroundImage = `url(${images[i]})`;
-  },3000);
+  let current = el;
+  let nextImage = new Image();
+
+  // 最初の画像
+  el.style.backgroundImage = `url(${images[0]})`;
+
+  setInterval(() => {
+    i = (i + 1) % images.length;
+
+    // 先に読み込む
+    nextImage.src = images[i];
+
+    nextImage.onload = () => {
+      el.style.transition = "background-image 1s ease";
+      el.style.backgroundImage = `url(${images[i]})`;
+    };
+
+  }, 3000);
 }
 
 bgSlide("club", ["torakkuman.jpeg","shaft.jpeg","club.jpeg"]);
