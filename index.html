@@ -196,16 +196,25 @@
 </div>
 
 <script>
-// スライド
+// 🔥 トップスライド
+let index = 0;
+const slides = document.querySelectorAll(".slide");
+
+setInterval(() => {
+  slides[index].classList.remove("active");
+  index = (index + 1) % slides.length;
+  slides[index].classList.add("active");
+}, 1000);
+
+
+// 🔥 bgフェード
 function bgFade(id){
   const imgs = document.querySelectorAll(`#${id} .bg-img`);
   let i = 0;
 
   setInterval(() => {
     imgs[i].classList.remove("active");
-
     i = (i + 1) % imgs.length;
-
     imgs[i].classList.add("active");
   }, 3000);
 }
@@ -214,7 +223,8 @@ bgFade("club");
 bgFade("wear");
 bgFade("acc");
 
-// ローディング
+
+// 🔥 ローディング
 const video = document.getElementById("loading-video");
 video.addEventListener("ended", () => {
   const loading = document.getElementById("loading");
@@ -224,30 +234,7 @@ video.addEventListener("ended", () => {
   }, 1000);
 });
 
-// 背景スライド
-function bgSlide(id, images){
-  let i = 0;
-  const el = document.getElementById(id);
 
-  let current = el;
-  let nextImage = new Image();
-
-  // 最初の画像
-  el.style.backgroundImage = `url(${images[0]})`;
-
-  setInterval(() => {
-    i = (i + 1) % images.length;
-
-    // 先に読み込む
-    nextImage.src = images[i];
-
-    nextImage.onload = () => {
-      el.style.transition = "background-image 1s ease";
-      el.style.backgroundImage = `url(${images[i]})`;
-    };
-
-  }, 3000);
-}
 
 
 // フェード
