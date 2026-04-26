@@ -65,28 +65,43 @@
     </section>
 
     <!-- 🏌️ クラブ -->
-    <section class="bg-slider fade" id="club">
-      <div class="overlay">
-        <h2>CLUB</h2>
-        <p>最新モデル入荷中！</p>
-      </div>
-    </section>
+<section class="bg-slider fade" id="club">
 
-    <!-- 👕 ウェア -->
-    <section class="bg-slider fade" id="wear">
-      <div class="overlay">
-        <h2>WEAR</h2>
-        <p>26ss入荷中！</p>
-      </div>
-    </section>
+  <img src="torakkuman.jpeg" class="bg-img active">
+  <img src="shaft.jpeg" class="bg-img">
+  <img src="club.jpeg" class="bg-img">
 
-    <!-- 🎒 小物 -->
-    <section class="bg-slider fade" id="acc">
-      <div class="overlay">
-        <h2>ACCESSORY</h2>
-        <p>便利アイテム多数！</p>
-      </div>
-    </section>
+  <div class="overlay">
+    <h2>CLUB</h2>
+    <p>最新モデル入荷中！</p>
+  </div>
+</section>
+
+<!-- 👕 ウェア -->
+<section class="bg-slider fade" id="wear">
+
+  <img src="wear.jpeg" class="bg-img active">
+  <img src="cap.jpeg" class="bg-img">
+  <img src="shoes.jpeg" class="bg-img">
+
+  <div class="overlay">
+    <h2>WEAR</h2>
+    <p>26ss入荷中！</p>
+  </div>
+</section>
+
+<!-- 🎒 小物 -->
+<section class="bg-slider fade" id="acc">
+
+  <img src="distance meter.jpeg" class="bg-img active">
+  <img src="bag.jpeg" class="bg-img">
+  <img src="ball.jpeg" class="bg-img">
+
+  <div class="overlay">
+    <h2>ACCESSORY</h2>
+    <p>便利アイテム多数！</p>
+  </div>
+</section>
 
     <!-- 🔗 練習場 -->
     <section class="link-banner fade">
@@ -182,14 +197,22 @@
 
 <script>
 // スライド
-let index = 0;
-const slides = document.querySelectorAll(".slide");
+function bgFade(id){
+  const imgs = document.querySelectorAll(`#${id} .bg-img`);
+  let i = 0;
 
-setInterval(() => {
-  slides[index].classList.remove("active");
-  index = (index + 1) % slides.length;
-  slides[index].classList.add("active");
-}, 1000);
+  setInterval(() => {
+    imgs[i].classList.remove("active");
+
+    i = (i + 1) % imgs.length;
+
+    imgs[i].classList.add("active");
+  }, 3000);
+}
+
+bgFade("club");
+bgFade("wear");
+bgFade("acc");
 
 // ローディング
 const video = document.getElementById("loading-video");
@@ -226,9 +249,6 @@ function bgSlide(id, images){
   }, 3000);
 }
 
-bgSlide("club", ["torakkuman.jpeg","shaft.jpeg","club.jpeg"]);
-bgSlide("wear", ["wear.jpeg","cap.jpeg","shoes.jpeg"]);
-bgSlide("acc", ["distance meter.jpeg","bag.jpeg","ball.jpeg"]);
 
 // フェード
 const fades = document.querySelectorAll('.fade');
